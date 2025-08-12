@@ -26,8 +26,6 @@ public class nthRemove {
             System.out.print(result.data + " ");
             result = result.next;
         }
-
-
     }
     public static Node arrtoLL(int [] arr){
         if(arr.length == 0){
