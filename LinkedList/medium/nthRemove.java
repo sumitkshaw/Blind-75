@@ -1,8 +1,7 @@
 
 import java.util.Scanner;
 
-
-public class detectloop{
+public class nthRemove {
     static class Node{
         int data;
         Node next;
@@ -14,13 +13,21 @@ public class detectloop{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int arr[] =new int [n];
+        int [] arr = new int[n];
+        int pos = sc.nextInt();
+
         for(int i=0; i<n;i++){
-            arr[i]= sc.nextInt();
+            arr[i] = sc.nextInt();
         }
+        sc.close();
         Node head = arrtoLL(arr);
-        boolean result = detect(head);
-        System.out.println(result);
+        Node result = remove(head, pos);
+        while(result!=null){
+            System.out.print(result.data + " ");
+            result = result.next;
+        }
+
+
     }
     public static Node arrtoLL(int [] arr){
         if(arr.length == 0){
@@ -36,20 +43,17 @@ public class detectloop{
         }
         return head;
     }
-    public static boolean detect(Node head){
-        if(head == null){
-            return false;
-        }
+    public static Node remove(Node head, int pos){
         Node fast = head;
         Node slow = head;
-
-        while(fast!=null && fast.next!=null){
-            slow = slow.next;
-            fast = fast.next.next;
-            if(slow == fast){
-                return true;
-            }
+        for(int i=0;i<pos;i++){
+            fast = fast.next;
         }
-        return false;
-    }
+        while(fast.next!=null){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return head;
+    } 
 }
