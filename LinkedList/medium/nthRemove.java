@@ -47,6 +47,7 @@ public class nthRemove {
         for(int i=0;i<pos;i++){
             fast = fast.next;
         }
+        if (fast == null) return head.next;
         while(fast.next!=null){
             slow = slow.next;
             fast = fast.next;
