@@ -46,7 +46,7 @@ public class sameTree {
                 curr.left = new TreeNode(arr[i++]);
                 queue.offer(curr.left);
             }
-            else{
+            if(i<arr.length){
                 curr.right = new TreeNode(arr[i++]);
                 queue.offer(curr.right);
             }
